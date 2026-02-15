@@ -229,12 +229,27 @@ RINGKASION/
 ## 📚 Algorithm References
 
 ### Theoretical Foundations
-1. **Spectral Graph Theory**: Chung, F. R. (1997). Spectral Graph Theory
-2. **PageRank**: Page, L., et al. (1999). The PageRank Citation Ranking
-3. **TextRank**: Mihalcea, R., & Tarau, P. (2004). TextRank
-4. **Maximal Marginal Relevance**: Carbonell, J., & Goldstein, J. (1998)
-5. **Self-Attention**: Vaswani, A., et al. (2017). Attention Is All You Need
-6. **Spectral Clustering**: Ng, A., et al. (2002). Spectral Clustering
+
+1. **Spectral Graph Theory**
+   - Chung, F. R. (1997). *Spectral Graph Theory*. American Mathematical Society. ISBN: 978-0821803158.
+   
+2. **PageRank Algorithm**
+   - Page, L., Brin, S., Motwani, R., & Winograd, T. (1999). *The PageRank Citation Ranking: Bringing Order to the Web*. Stanford InfoLab Technical Report.
+   
+3. **TextRank for Summarization**
+   - Mihalcea, R., & Tarau, P. (2004). *TextRank: Bringing Order into Text*. In Proceedings of EMNLP 2004, pp. 404-411. DOI: 10.3115/1219044.1219064
+   
+4. **Maximal Marginal Relevance**
+   - Carbonell, J., & Goldstein, J. (1998). *The Use of MMR, Diversity-Based Reranking for Reordering Documents and Producing Summaries*. In SIGIR '98, pp. 335-336. DOI: 10.1145/290941.291025
+   
+5. **Self-Attention Mechanism**
+   - Vaswani, A., Shazeer, N., Parmar, N., et al. (2017). *Attention Is All You Need*. In NeurIPS 2017, pp. 5998-6008. arXiv:1706.03762
+   
+6. **Spectral Clustering**
+   - Ng, A. Y., Jordan, M. I., & Weiss, Y. (2002). *On Spectral Clustering: Analysis and an Algorithm*. In NeurIPS 2002, pp. 849-856.
+   
+7. **Graph Laplacian**
+   - Belkin, M., & Niyogi, P. (2003). *Laplacian Eigenmaps for Dimensionality Reduction and Data Representation*. Neural Computation, 15(6), 1373-1396. DOI: 10.1162/089976603321780317
 
 ### Adaptations for Indonesian
 - Custom stopwords and importance lexicons

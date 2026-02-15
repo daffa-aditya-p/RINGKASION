@@ -1023,19 +1023,19 @@ class VectorEngine:
         for seed in range(12):
             hash_input = f"{seed}:{text}".encode('utf-8')
             
-            # Combine SHA-256 and MD5 for diversity
-            h_sha = hashlib.sha256(hash_input).digest()
-            h_md5 = hashlib.md5(hash_input).digest()
+            # Use SHA-256 twice with different salts for diversity
+            h_sha1 = hashlib.sha256(hash_input).digest()
+            h_sha2 = hashlib.sha256((hash_input + b":salt")).digest()
             
             # Map bytes to vector positions with better distribution
             chunk_size = self.dim // 12
             for i in range(chunk_size):
                 idx = seed * chunk_size + i
                 if idx < self.dim:
-                    # Combine both hashes
-                    val_sha = (h_sha[i % len(h_sha)] - 128) / 128.0
-                    val_md5 = (h_md5[i % len(h_md5)] - 128) / 128.0
-                    vec[idx] = (val_sha + val_md5) / 2.0
+                    # Combine both hashes for better randomization
+                    val_sha1 = (h_sha1[i % len(h_sha1)] - 128) / 128.0
+                    val_sha2 = (h_sha2[i % len(h_sha2)] - 128) / 128.0
+                    vec[idx] = (val_sha1 + val_sha2) / 2.0
         
         return vec
     
