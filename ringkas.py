@@ -40,7 +40,7 @@ PREFIXES = [
 # Indonesian suffixes (akhiran)
 SUFFIXES = [
     'kan', 'an', 'i', 'nya', 'lah', 'kah', 'pun',
-    'mu', 'ku', 'ku', 'ku'
+    'mu', 'ku'
 ]
 
 # Indonesian infixes (sisipan)
@@ -315,6 +315,7 @@ class BM25:
         self.k1 = k1
         self.b = b
         self.doc_freqs = Counter()
+        self.documents = []  # Store documents
         self.doc_lengths = []
         self.avg_doc_length = 0.0
         self.num_docs = 0
@@ -322,6 +323,7 @@ class BM25:
     
     def fit(self, documents: List[List[str]]):
         """Build document frequency statistics"""
+        self.documents = documents
         self.num_docs = len(documents)
         self.doc_lengths = [len(doc) for doc in documents]
         self.avg_doc_length = np.mean(self.doc_lengths) if self.doc_lengths else 0.0
@@ -352,9 +354,10 @@ class BM25:
         for term, qtf in query_freqs.items():
             idf = self.idf_cache.get(term, 0.0)
             
-            for doc_idx, doc_length in enumerate(self.doc_lengths):
-                # Term frequency in document
-                tf = self.doc_freqs.get(term, 0)  # Simplified for sentence-level
+            for doc_idx in range(self.num_docs):
+                # Count term frequency in this specific document
+                tf = self.documents[doc_idx].count(term)
+                doc_length = self.doc_lengths[doc_idx]
                 
                 # BM25 formula
                 numerator = tf * (self.k1 + 1)
